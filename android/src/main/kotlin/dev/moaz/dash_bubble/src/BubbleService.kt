@@ -108,12 +108,13 @@ class BubbleService : FloatingBubbleService() {
             .setContentTitle(notificationTitle)
             .setContentText(notificationOptions.body)
             .setSmallIcon(notificationIcon)
-            .setPriority(NotificationCompat.PRIORITY_MIN)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setSilent(true)
             .setCategory(Notification.CATEGORY_SERVICE)
             .build()
 
 
-//        notify(notification)
+        notify(notification)
     }
 
     /** This method is called when the app is closed.
