@@ -101,9 +101,10 @@ class BubbleService : FloatingBubbleService() {
             notificationOptions.icon,
             R.drawable.default_bubble_icon
         )
-
+// silent notification
         val notification = NotificationCompat.Builder(this, channelId())
             .setOngoing(true)
+
             .setContentTitle(notificationTitle)
             .setContentText(notificationOptions.body)
             .setSmallIcon(notificationIcon)
@@ -111,7 +112,8 @@ class BubbleService : FloatingBubbleService() {
             .setCategory(Notification.CATEGORY_SERVICE)
             .build()
 
-        notify(notification)
+
+//        notify(notification)
     }
 
     /** This method is called when the app is closed.
