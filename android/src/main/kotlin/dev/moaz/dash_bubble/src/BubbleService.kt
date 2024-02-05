@@ -1,6 +1,7 @@
 package dev.moaz.dash_bubble.src
 
 import android.app.Notification
+import android.app.PendingIntent
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.torrydo.floatingbubbleview.BubbleBehavior
@@ -53,12 +54,13 @@ class BubbleService : FloatingBubbleService() {
 
     /** This method defines the main setup of the bubble. */
     override fun setupBubble(action: FloatingBubble.Action): FloatingBubble.Builder {
+        println(bubbleOptions.bubbleIcon);
         val bubbleIcon = Helpers.getDrawableId(
             applicationContext,
+            //default_bubble_icon
             bubbleOptions.bubbleIcon,
-            R.drawable.default_bubble_icon
+            R.drawable.bubble_icon
         )
-
         val closeIcon = Helpers.getDrawableId(
             applicationContext,
             bubbleOptions.closeIcon,
@@ -95,7 +97,6 @@ class BubbleService : FloatingBubbleService() {
     private fun showNotification() {
         val notificationTitle =
             notificationOptions.title ?: Helpers.getApplicationName(applicationContext)
-
         val notificationIcon = Helpers.getDrawableId(
             applicationContext,
             notificationOptions.icon,
@@ -105,11 +106,17 @@ class BubbleService : FloatingBubbleService() {
         val notification = NotificationCompat.Builder(this, channelId())
             .setOngoing(true)
 
+
             .setContentTitle(notificationTitle)
             .setContentText(notificationOptions.body)
             .setSmallIcon(notificationIcon)
+
+
             .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
             .setSilent(true)
+
+
             .setCategory(Notification.CATEGORY_SERVICE)
             .build()
 
