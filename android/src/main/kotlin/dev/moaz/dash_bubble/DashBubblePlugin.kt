@@ -68,7 +68,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 Constants.START_BUBBLE -> result.success(
                     bubbleManager.startBubble(
                         BubbleOptions.fromMethodCall(call),
-                        NotificationOptions.fromMethodCall(call)
+                        NotificationOptions.fromMethodCall(call),
                     )
                 )
                 Constants.STOP_BUBBLE -> result.success(bubbleManager.stopBubble())
